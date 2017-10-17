@@ -8,7 +8,7 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
+        "assets/img",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -21,7 +21,13 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "assets/js/perfect-scrollbar.jquery.min.js",
+        "assets/js/material.min.js",
+        "assets/js/material-dashboard.js"                  
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,5 +1,15 @@
-<div>
-  <a routerLink="/newest">Newest ideas</a>
-  <a routerLink="/category/3">Category</a>
+<div class="wrapper">
+  <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-3.jpg">
+    <div class="sidebar-wrapper">
+        <a routerLink="/newest">Newest ideas</a>
+        <a routerLink="/category/3">Category</a>
+    </div>
+    
+  </div>
+
+  <div class="main-panel">
+      <router-outlet></router-outlet>
+  </div>
+
+  
 </div>
-<router-outlet></router-outlet>
