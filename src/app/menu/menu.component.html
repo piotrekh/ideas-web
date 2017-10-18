@@ -1,8 +1,8 @@
 <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-3.jpg">
   <div class="logo">
-      <a href="http://www.creative-tim.com" class="simple-text">
+      <div class="simple-text">
           Ideas
-      </a>
+      </div>
   </div>
   <div class="sidebar-wrapper">
       <ul class="nav">
@@ -12,10 +12,10 @@
               <p>Newest ideas</p>
             </a>
           </li>
-          <li routerLinkActive="active">
-            <a routerLink="/category/3">
+          <li routerLinkActive="active" *ngFor="let category of categories | async">
+            <a routerLink="/category/{{category.id}}">
               <i class="material-icons">folder_open</i>
-              <p>Category</p>
+              <p>{{category.name}}</p>
             </a>
           </li>
         </ul>

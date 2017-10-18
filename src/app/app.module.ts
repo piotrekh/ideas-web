@@ -2,12 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
+import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { ApplicationRoutes } from './app.routing';
 import { MenuComponent } from './menu/menu.component';
 import { CategoryComponent } from './category/category.component';
 import { NewestIdeasComponent } from './newest-ideas/newest-ideas.component';
+
+import { ApiService } from './shared/services/api.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,12 @@ import { NewestIdeasComponent } from './newest-ideas/newest-ideas.component';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(ApplicationRoutes)
+    RouterModule.forRoot(ApplicationRoutes)  ,
+    HttpModule  
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
