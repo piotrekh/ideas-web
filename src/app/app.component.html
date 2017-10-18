@@ -1,15 +1,24 @@
 <div class="wrapper">
-  <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-3.jpg">
-    <div class="sidebar-wrapper">
-        <a routerLink="/newest">Newest ideas</a>
-        <a routerLink="/category/3">Category</a>
-    </div>
-    
-  </div>
+  <app-menu></app-menu>
 
   <div class="main-panel">
+    <nav class="navbar navbar-transparent navbar-absolute">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Section title </a>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
       <router-outlet></router-outlet>
+    </div>
   </div>
 
-  
+
 </div>
