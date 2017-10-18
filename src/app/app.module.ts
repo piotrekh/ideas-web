@@ -11,13 +11,17 @@ import { CategoryComponent } from './category/category.component';
 import { NewestIdeasComponent } from './newest-ideas/newest-ideas.component';
 
 import { ApiService } from './shared/services/api.service';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     CategoryComponent,
-    NewestIdeasComponent    
+    NewestIdeasComponent,
+    LoginComponent,
+    MainComponent    
   ],
   imports: [
     BrowserModule,
