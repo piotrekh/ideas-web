@@ -16,6 +16,7 @@ import { ApiService } from './shared/services/api.service';
 import { AuthService } from './shared/services/auth.service';
 
 import { AuthGuard } from './shared/guards/auth.guard';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     CategoryComponent,
     NewestIdeasComponent,
     LoginComponent,
-    MainComponent    
+    MainComponent,
+    NavbarComponent    
   ],
   imports: [
     BrowserModule,
