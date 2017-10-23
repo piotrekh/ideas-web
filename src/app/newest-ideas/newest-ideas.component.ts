@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable} from 'rxjs';
+
+import { ApiService } from '../shared/services/api.service';
+import { Idea } from '../shared/models/idea.model';
 
 @Component({
   selector: 'app-newest-ideas',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewestIdeasComponent implements OnInit {
 
-  constructor() { }
+  public ideas: Idea[] = [];
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.apiService.getNewestIdeas().subscribe(result => this.ideas = result);
   }
-
 }

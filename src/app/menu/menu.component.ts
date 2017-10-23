@@ -18,21 +18,5 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.categories = this.apiService.getCategories();
-    // this.categories.push({
-    //   id: "1",
-    //   name: "Projects"
-    // });
-    // this.categories.push({
-    //   id: "2",
-    //   name: "Social events"
-    // });
-    // this.categories.push({
-    //   id: "3",
-    //   name: "Office equipment"
-    // });
-    // this.categories.push({
-    //   id: "4",
-    //   name: "Workplace"
-    // });
   }
 }

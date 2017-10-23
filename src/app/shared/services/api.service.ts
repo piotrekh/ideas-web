@@ -7,6 +7,8 @@ import { environment } from '../../../environments/environment';
 import { Category } from '../models/category.model';
 import { TokenResponse } from '../models/token-response.model';
 import { TokenRequest } from '../models/token-request.model';
+import { ItemsResult } from '../models/items-result.model';
+import { Idea } from '../models/idea.model';
 import * as constants from '../const/constants';
 
 import { StorageService } from './storage.service';
@@ -15,6 +17,20 @@ import { StorageService } from './storage.service';
 export class ApiService {
     constructor(private http: Http,
         private storageService: StorageService){ }
+
+    /**
+     * Creates http request options with Authorization header
+     */
+    private createHttpOptions() : RequestOptionsArgs {
+        let requestHeaders = new Headers();
+        requestHeaders.append('Authorization', 'bearer ' + this.storageService.getAccessToken());  
+
+        let requestOptions: RequestOptionsArgs = {
+            headers: requestHeaders
+        };
+
+        return requestOptions;
+    }
 
     getAccessToken(email: string, password: string) : Observable<TokenResponse> {
         let url: string = `${environment.apiUrl}/auth/token`;
@@ -44,18 +60,27 @@ export class ApiService {
             .map((r: Response) => { return r.json() as TokenResponse; });
     }
 
+    //#region Categories
+
     getCategories() : Observable<Category[]>{
         let url: string = `${environment.apiUrl}/categories`;
         let accessToken = localStorage.getItem("accessToken");
 
-        let requestHeaders = new Headers();
-        requestHeaders.append('Authorization', 'bearer ' + this.storageService.getAccessToken());  
-
-        let requestOptions: RequestOptionsArgs = {
-            headers: requestHeaders
-        };
-
-        return this.http.get(url, requestOptions)
+        return this.http.get(url, this.createHttpOptions())
             .map((r: Response) => { return r.json().items as Category[]; });
     }
+
+    //#endregion
+
+    //#region Ideas
+
+    getNewestIdeas() : Observable<Idea[]> {
+        let url: string = `${environment.apiUrl}/ideas/newest`;
+        let accessToken = localStorage.getItem("accessToken");
+
+        return this.http.get(url, this.createHttpOptions())
+            .map((r: Response) => { return r.json().items as Idea[]; });
+    }
+
+    //#endregion
 }
