@@ -1,17 +1,20 @@
-import { Injectable } from '@angular/core'
-import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http'
-import { Observable } from 'rxjs'
-import 'rxjs/add/operator/map'
+import { Injectable } from '@angular/core';
+import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
-import { environment } from '../../../environments/environment'
-import { Category } from '../models/category.model'
-import { TokenResponse } from '../models/token-response.model'
-import { TokenRequest } from '../models/token-request.model'
-import * as constants from '../const/constants'
+import { environment } from '../../../environments/environment';
+import { Category } from '../models/category.model';
+import { TokenResponse } from '../models/token-response.model';
+import { TokenRequest } from '../models/token-request.model';
+import * as constants from '../const/constants';
+
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class ApiService {
-    constructor(private http: Http){ }
+    constructor(private http: Http,
+        private storageService: StorageService){ }
 
     getAccessToken(email: string, password: string) : Observable<TokenResponse> {
         let url: string = `${environment.apiUrl}/auth/token`;
@@ -43,9 +46,10 @@ export class ApiService {
 
     getCategories() : Observable<Category[]>{
         let url: string = `${environment.apiUrl}/categories`;
+        let accessToken = localStorage.getItem("accessToken");
 
         let requestHeaders = new Headers();
-        requestHeaders.append('Authorization', 'bearer <TOKEN>');  
+        requestHeaders.append('Authorization', 'bearer ' + this.storageService.getAccessToken());  
 
         let requestOptions: RequestOptionsArgs = {
             headers: requestHeaders

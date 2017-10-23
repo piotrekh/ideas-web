@@ -12,6 +12,7 @@ import { NewestIdeasComponent } from './newest-ideas/newest-ideas.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 
+import { StorageService } from './shared/services/storage.service';
 import { ApiService } from './shared/services/api.service';
 import { AuthService } from './shared/services/auth.service';
 
@@ -35,6 +36,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpModule  
   ],
   providers: [
+    StorageService,
     ApiService,
     AuthService,
     AuthGuard
