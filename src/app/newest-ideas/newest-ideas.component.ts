@@ -7,7 +7,7 @@ import { Idea } from '../shared/models/idea.model';
 @Component({
   selector: 'app-newest-ideas',
   templateUrl: './newest-ideas.component.html',
-  styleUrls: ['./newest-ideas.component.css']
+  styleUrls: ['./newest-ideas.component.scss']
 })
 export class NewestIdeasComponent implements OnInit {
 
