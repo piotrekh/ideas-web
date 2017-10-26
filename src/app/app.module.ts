@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { LoadingModule } from 'ngx-loading';
+import { ngxLoadingConfig } from './shared/config/ngx-loading.config';
+
 import { AppComponent } from './app.component';
 import { ApplicationRoutes } from './app.routing';
 import { MenuComponent } from './menu/menu.component';
@@ -32,8 +35,9 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(ApplicationRoutes)  ,
-    HttpModule  
+    RouterModule.forRoot(ApplicationRoutes),
+    HttpModule,
+    LoadingModule.forRoot(ngxLoadingConfig)
   ],
   providers: [
     StorageService,

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   public email: string;
   public password: string;
+  public loading: boolean = false;
 
   constructor(private router: Router,
     private authService: AuthService) { }
@@ -23,8 +24,12 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    this.loading = true;
+
     this.authService.login(this.email, this.password).subscribe(({}) => {
+      this.loading = false;
       this.router.navigate([""]);
-    });
+    },
+    error => this.loading = false);
   }
 }
