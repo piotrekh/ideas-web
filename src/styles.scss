@@ -22,3 +22,14 @@ html,body,.fluid-container {
     position: relative; 
     min-height: 75px;
 }
+
+.card-header.card-header-sm {
+    padding: 10px;
+
+    i.card-icon-sm {
+        font-size: 18px;
+        width: 25px;
+        height: 25px;
+        line-height: 21px;
+    }
+}
