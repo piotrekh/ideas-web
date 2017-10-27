@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 
 
 import { Category } from '../shared/models/category.model'
@@ -11,6 +11,7 @@ import { ApiService } from '../shared/services/api.service'
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  @Output() pageChange: EventEmitter<string> = new EventEmitter<string>();
 
   public categories: Observable<Category[]>;
 
@@ -18,5 +19,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.categories = this.apiService.getCategories();
+  }
+
+  notifyOfPageChange(page: string) {
+    this.pageChange.emit(page);
   }
 }

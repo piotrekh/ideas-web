@@ -1,8 +1,8 @@
 <div class="wrapper">
-  <app-menu></app-menu>
+  <app-menu (pageChange)="onPageChange($event)"></app-menu>
 
   <div class="main-panel">
-    <app-navbar></app-navbar>
+    <app-navbar [pageTitle]="pageTitle"></app-navbar>
     <div class="content">
       <router-outlet></router-outlet>
     </div>

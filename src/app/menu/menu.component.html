@@ -7,13 +7,13 @@
   <div class="sidebar-wrapper">
       <ul class="nav">
           <li routerLinkActive="active">
-            <a routerLink="/newest">
+            <a routerLink="/newest" (click)="notifyOfPageChange('Newest ideas')">
               <i class="material-icons">lightbulb_outline</i>
               <p>Newest ideas</p>
             </a>
           </li>
           <li routerLinkActive="active" *ngFor="let category of categories | async">
-            <a routerLink="/category/{{category.id}}">
+            <a routerLink="/category/{{category.id}}" (click)="notifyOfPageChange(category.name)">
               <i class="material-icons">folder_open</i>
               <p>{{category.name}}</p>
             </a>

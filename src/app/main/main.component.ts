@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  public pageTitle: string = "Newest ideas";
+
   constructor() { }
 
   ngOnInit() {
     prepareSidebar();
   }
 
+  onPageChange(page: string) {
+    this.pageTitle = page;
+  }
 }
