@@ -2,10 +2,25 @@
     "version": "0.2.0",
     "configurations": [
       {
+        // For this to work, start chrome using
+        // google-chrome --remote-debugging-port=9222 http://localhost:4200
+        // and do not use its developer tools simultaneously.
+        "name": "ng serve (attach to chrome)",
+        "type": "chrome",
+        "request": "attach",
+        "url": "http://localhost:4200/*",
+        "port": 9222,        
+        "webRoot": "${workspaceRoot}",
+        "sourceMaps": true,
+        "sourceMapPathOverrides": {
+          "webpack:///*": "/*"
+        }
+      },
+      {
         "name": "ng serve",
         "type": "chrome",
         "request": "launch",
-        "url": "http://localhost:4200/#",
+        "url": "http://localhost:4200/",
         "webRoot": "${workspaceRoot}"
       },
       {

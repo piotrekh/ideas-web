@@ -17,3 +17,8 @@ html,body,.fluid-container {
     height: 100%;
     justify-content: center;
 }
+
+.loading-container {
+    position: relative; 
+    min-height: 75px;
+}

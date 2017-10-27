@@ -11,11 +11,19 @@ import { Idea } from '../shared/models/idea.model';
 })
 export class NewestIdeasComponent implements OnInit {
 
+  public loading: boolean = true;
   public ideas: Idea[] = [];
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getNewestIdeas().subscribe(result => this.ideas = result);
+    this.apiService.getNewestIdeas().delay(3000).subscribe(
+      result => {
+        this.loading = false;  
+        this.ideas = result;        
+      }, 
+      error => {
+        this.loading = false;
+      });
   }
 }
