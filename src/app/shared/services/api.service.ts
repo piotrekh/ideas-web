@@ -9,6 +9,7 @@ import { TokenResponse } from '../models/token-response.model';
 import { TokenRequest } from '../models/token-request.model';
 import { ItemsResult } from '../models/items-result.model';
 import { Idea } from '../models/idea.model';
+import { IdeaDetails } from '../models/idea-details.model';
 import * as constants from '../const/constants';
 
 import { StorageService } from './storage.service';
@@ -16,14 +17,14 @@ import { StorageService } from './storage.service';
 @Injectable()
 export class ApiService {
     constructor(private http: Http,
-        private storageService: StorageService){ }
+        private storageService: StorageService) { }
 
     /**
      * Creates http request options with Authorization header
      */
-    private createHttpOptions() : RequestOptionsArgs {
+    private createHttpOptions(): RequestOptionsArgs {
         let requestHeaders = new Headers();
-        requestHeaders.append('Authorization', 'bearer ' + this.storageService.getAccessToken());  
+        requestHeaders.append('Authorization', 'bearer ' + this.storageService.getAccessToken());
 
         let requestOptions: RequestOptionsArgs = {
             headers: requestHeaders
@@ -32,7 +33,7 @@ export class ApiService {
         return requestOptions;
     }
 
-    getAccessToken(email: string, password: string) : Observable<TokenResponse> {
+    getAccessToken(email: string, password: string): Observable<TokenResponse> {
         let url: string = `${environment.apiUrl}/auth/token`;
         let body: TokenRequest = {
             client_id: environment.clientId,
@@ -46,7 +47,7 @@ export class ApiService {
             .map((r: Response) => { return r.json() as TokenResponse; });
     }
 
-    refreshAccessToken(refreshToken: string) : Observable<TokenResponse> {
+    refreshAccessToken(refreshToken: string): Observable<TokenResponse> {
         let url: string = `${environment.apiUrl}/auth/token`;
         let body: TokenRequest = {
             client_id: environment.clientId,
@@ -62,7 +63,7 @@ export class ApiService {
 
     //#region Categories
 
-    getCategories() : Observable<Category[]>{
+    getCategories(): Observable<Category[]> {
         let url: string = `${environment.apiUrl}/categories`;
 
         return this.http.get(url, this.createHttpOptions())
@@ -73,18 +74,25 @@ export class ApiService {
 
     //#region Ideas
 
-    getNewestIdeas() : Observable<Idea[]> {
+    getNewestIdeas(): Observable<Idea[]> {
         let url: string = `${environment.apiUrl}/ideas/newest`;
 
         return this.http.get(url, this.createHttpOptions())
             .map((r: Response) => { return r.json().items as Idea[]; });
     }
 
-    getIdeasFromCategory(categoryId: string) : Observable<Idea[]> {
+    getIdeasFromCategory(categoryId: string): Observable<Idea[]> {
         let url: string = `${environment.apiUrl}/categories/${categoryId}/ideas`;
 
         return this.http.get(url, this.createHttpOptions())
             .map((r: Response) => { return r.json().items as Idea[]; });
+    }
+
+    getIdeaDetails(id: string): Observable<IdeaDetails> {
+        let url: string = `${environment.apiUrl}/ideas/${id}`;
+
+        return this.http.get(url, this.createHttpOptions())
+            .map((r: Response) => { return r.json() as IdeaDetails; });
     }
 
     //#endregion

@@ -1,7 +1,11 @@
-.idea-card .card-content {
-    height: 80px;
-}
+.idea-card {
+    cursor: pointer;
 
-.idea-card .card-content .title {
-    font-size: 16px; 
+    .card-content {
+        height: 80px;
+
+        .title {
+            font-size: 16px; 
+        }
+    }
 }

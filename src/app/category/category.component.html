@@ -7,7 +7,7 @@
 
     <div [@listAnimation]="ideas.length">
       <div *ngFor="let idea of ideas" class="col-lg-4 col-md-6 col-sm-6">
-        <app-idea-card [title]="idea.title" [createdDate]="idea.createdDate"></app-idea-card>
+        <app-idea-card [id]="idea.id" [title]="idea.title" [createdDate]="idea.createdDate"></app-idea-card>
       </div>
     </div>
 

@@ -23,6 +23,7 @@ import { AuthService } from './shared/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IdeaCardComponent } from './idea-card/idea-card.component';
+import { IdeaDetailsComponent } from './idea-details/idea-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { IdeaCardComponent } from './idea-card/idea-card.component';
     LoginComponent,
     MainComponent,
     NavbarComponent,
-    IdeaCardComponent    
+    IdeaCardComponent,
+    IdeaDetailsComponent    
   ],
   imports: [
     BrowserModule,

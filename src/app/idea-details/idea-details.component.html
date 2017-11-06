@@ -1,0 +1,18 @@
+<div class="loading-container" *ngIf="loading">
+  <ngx-loading [show]="loading" [config]="{ backdropBackgroundColour: 'transparent' }"></ngx-loading>
+</div>
+
+<div class="card" *ngIf="idea">
+  <div class="card-header" data-background-color="purple">
+    <h4 class="title">{{ idea.title }}</h4>
+    <p class="category">by {{ idea.author.firstName }} {{ idea.author.lastName }} on {{ idea.createdDate }}</p>
+  </div>
+  <div class="card-content">
+    <div>
+      <span *ngFor="let subcategory of idea.subcategories" class="badge subcategory-badge">{{ subcategory.name }}</span>
+    </div>
+    <div class="idea-description">
+      {{ idea.description }}
+    </div>
+  </div>
+</div>
