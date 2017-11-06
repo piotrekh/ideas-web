@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,6 +22,7 @@ import { AuthService } from './shared/services/auth.service';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
+import { IdeaCardComponent } from './idea-card/idea-card.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +32,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     NewestIdeasComponent,
     LoginComponent,
     MainComponent,
-    NavbarComponent    
+    NavbarComponent,
+    IdeaCardComponent    
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(ApplicationRoutes),
     HttpModule,

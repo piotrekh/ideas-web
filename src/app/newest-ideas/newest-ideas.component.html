@@ -2,24 +2,14 @@
   <div class="container-fluid">
 
     <div class="loading-container" *ngIf="loading">
-        <ngx-loading [show]="loading" [config]="{ backdropBackgroundColour: 'transparent' }"></ngx-loading> 
+      <ngx-loading [show]="loading" [config]="{ backdropBackgroundColour: 'transparent' }"></ngx-loading>
     </div>
 
-    <div *ngFor="let idea of ideas" class="col-lg-4 col-md-6 col-sm-6">
-      <div class="card card-stats idea-card">
-        <div class="card-header card-header-sm" data-background-color="orange">
-          <i class="material-icons card-icon-sm">lightbulb_outline</i>
-        </div>
-        <div class="card-content">
-          <h3 class="title">{{idea.title}}</h3>
-        </div>
-        <div class="card-footer">
-          <div class="stats">
-            <i class="material-icons">update</i> {{idea.createdDate}}
-          </div>
-        </div>
+    <div [@listAnimation]="ideas.length">
+      <div *ngFor="let idea of ideas" class="col-lg-4 col-md-6 col-sm-6">
+        <app-idea-card [title]="idea.title" [createdDate]="idea.createdDate"></app-idea-card>
       </div>
-    </div>    
-    
+    </div>
+
   </div>
 </div>

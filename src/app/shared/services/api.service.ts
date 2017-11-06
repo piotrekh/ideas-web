@@ -64,7 +64,6 @@ export class ApiService {
 
     getCategories() : Observable<Category[]>{
         let url: string = `${environment.apiUrl}/categories`;
-        let accessToken = localStorage.getItem("accessToken");
 
         return this.http.get(url, this.createHttpOptions())
             .map((r: Response) => { return r.json().items as Category[]; });
@@ -76,7 +75,13 @@ export class ApiService {
 
     getNewestIdeas() : Observable<Idea[]> {
         let url: string = `${environment.apiUrl}/ideas/newest`;
-        let accessToken = localStorage.getItem("accessToken");
+
+        return this.http.get(url, this.createHttpOptions())
+            .map((r: Response) => { return r.json().items as Idea[]; });
+    }
+
+    getIdeasFromCategory(categoryId: string) : Observable<Idea[]> {
+        let url: string = `${environment.apiUrl}/categories/${categoryId}/ideas`;
 
         return this.http.get(url, this.createHttpOptions())
             .map((r: Response) => { return r.json().items as Idea[]; });
