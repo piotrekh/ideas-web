@@ -1,10 +1,12 @@
+<ngx-loading [show]="isSending" [config]="{ backdropBackgroundColour: 'rgba(0,0,0,0.2)', fullScreenBackdrop: true }"></ngx-loading>
+
 <div class="card">
     <div class="card-header" data-background-color="purple">
         <h4 class="title">Add a new idea</h4>
         <p class="category">Fill out the form to create a new idea</p>
     </div>
     <div class="card-content">
-        <form #ideaForm="ngForm" (ngSubmit)="onSubmitIdea()">
+        <form #ideaForm="ngForm" (ngSubmit)="onSubmitIdea(ideaForm)">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group label-floating" [class.has-error]="!title.valid && !title.pristine">
@@ -25,7 +27,7 @@
                 <div class="col-md-8">
                     <div class="form-group label-floating">
                         <label class="control-label">Subcategories</label>
-                        <tag-input [(ngModel)]="idea.subcategories" name="subcategories" [maxItems]="5" [disable]="!category.valid">
+                        <tag-input [(ngModel)]="idea.subcategories" name="subcategories" [maxItems]="5" [disable]="!category.valid" [modelAsStrings]="true">
                             <tag-input-dropdown [showDropdownIfEmpty]="false" [autocompleteItems]="subcategories" [autocompleteObservable]="autocompleteSubcategories">
                             </tag-input-dropdown>
                         </tag-input>
@@ -37,7 +39,7 @@
                 <div class="col-md-12">
                     <div class="form-group label-floating">
                         <label class="control-label"> Description</label>
-                        <textarea class="form-control" rows="5"></textarea>
+                        <textarea name="description" id="description" #description="ngModel" [(ngModel)]="idea.description" class="form-control" rows="5"></textarea>
                     </div>
                 </div>
             </div>

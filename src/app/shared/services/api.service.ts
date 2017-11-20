@@ -14,6 +14,7 @@ import * as constants from '../const/constants';
 
 import { StorageService } from './storage.service';
 import { Subcategory } from '../models/subcategory.model';
+import { CreateIdea } from '../models/create-idea.model';
 
 @Injectable()
 export class ApiService {
@@ -100,6 +101,13 @@ export class ApiService {
         let url: string = `${environment.apiUrl}/ideas/${id}`;
 
         return this.http.get(url, this.createHttpOptions())
+            .map((r: Response) => { return r.json() as IdeaDetails; });
+    }
+
+    createIdea(idea: CreateIdea): Observable<IdeaDetails> {
+        let url: string = `${environment.apiUrl}/ideas`;
+
+        return this.http.post(url, idea, this.createHttpOptions())
             .map((r: Response) => { return r.json() as IdeaDetails; });
     }
 
