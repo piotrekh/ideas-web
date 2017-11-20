@@ -1,0 +1,9 @@
+<div class="dropdown">
+	<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+    	{{ selectedItem ? selectedItem.value : 'Nothing selected' }}
+    	<b class="caret"></b>
+	</a>
+	<ul class="dropdown-menu">
+		<li *ngFor="let item of items" (click)="handleItemSelection(item)"><a>{{item.value}}</a></li>
+	</ul>
+</div>

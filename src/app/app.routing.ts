@@ -5,6 +5,7 @@ import { NewestIdeasComponent } from './newest-ideas/newest-ideas.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { IdeaDetailsComponent } from './idea-details/idea-details.component';
+import { IdeaFormComponent } from './idea-form/idea-form.component';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -30,9 +31,13 @@ export const ApplicationRoutes: Routes = [
           component: CategoryComponent
         },
         {
+          path: 'idea',
+          component: IdeaFormComponent,        
+        },
+        {
           path: 'idea/:id',
           component: IdeaDetailsComponent
-        }
+        }        
       ]
       
     },    

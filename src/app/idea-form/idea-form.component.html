@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card-header" data-background-color="purple">
+        <h4 class="title">Add a new idea</h4>
+        <p class="category">Fill out the form to create a new idea</p>
+    </div>
+    <div class="card-content">
+        <form #ideaForm="ngForm" (ngSubmit)="onSubmitIdea()">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating" [class.has-error]="!title.valid && !title.pristine">
+                        <label for="title" class="control-label">Title</label>
+                        <input name="title" id="title" #title="ngModel" [(ngModel)]="idea.title" required type="text" class="form-control">
+                        <span [hidden]="title.valid || title.pristine" class="material-icons form-control-feedback">clear</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group label-floating" [class.has-error]="!category.valid && !category.pristine">
+                        <label class="control-label">Category</label>
+                        <app-dropdown [(ngModel)]="idea.categoryId" [items]="categories" #category="ngModel" required name="category"></app-dropdown>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Subcategories</label>
+                        <tag-input [(ngModel)]='selectedSubcategories' name="subcategories" [maxItems]="5">
+                            <tag-input-dropdown [showDropdownIfEmpty]="false" [autocompleteItems]="subcategories">
+                            </tag-input-dropdown>
+                        </tag-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label"> Description</label>
+                        <textarea class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="!ideaForm.form.valid" class="btn btn-primary pull-right">Add idea</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

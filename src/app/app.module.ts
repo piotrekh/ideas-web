@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { LoadingModule } from 'ngx-loading';
 import { ngxLoadingConfig } from './shared/config/ngx-loading.config';
+import { TagInputModule } from 'ngx-chips';
 
 import { AppComponent } from './app.component';
 import { ApplicationRoutes } from './app.routing';
@@ -24,6 +25,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IdeaCardComponent } from './idea-card/idea-card.component';
 import { IdeaDetailsComponent } from './idea-details/idea-details.component';
+import { IdeaFormComponent } from './idea-form/idea-form.component';
+import { DropdownComponent } from './controls/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { IdeaDetailsComponent } from './idea-details/idea-details.component';
     MainComponent,
     NavbarComponent,
     IdeaCardComponent,
-    IdeaDetailsComponent    
+    IdeaDetailsComponent,
+    IdeaFormComponent,
+    DropdownComponent 
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import { IdeaDetailsComponent } from './idea-details/idea-details.component';
     FormsModule,
     RouterModule.forRoot(ApplicationRoutes),
     HttpModule,
-    LoadingModule.forRoot(ngxLoadingConfig)
+    LoadingModule.forRoot(ngxLoadingConfig),
+    TagInputModule
   ],
   providers: [
     StorageService,

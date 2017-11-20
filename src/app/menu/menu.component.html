@@ -1,23 +1,29 @@
 <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-3.jpg">
   <div class="logo">
-      <div class="simple-text">
-          Ideas
-      </div>
+    <div class="simple-text">
+      Ideas
+    </div>
   </div>
   <div class="sidebar-wrapper">
-      <ul class="nav">
-          <li routerLinkActive="active">
-            <a routerLink="/newest" (click)="notifyOfPageChange('Newest ideas')">
-              <i class="material-icons">lightbulb_outline</i>
-              <p>Newest ideas</p>
+    <ul class="nav">
+        <li routerLinkActive="active">
+            <a routerLink="/idea" (click)="notifyOfPageChange('Add an idea')">
+              <i class="material-icons">add</i>
+              <p>Add an idea</p>
             </a>
           </li>
-          <li routerLinkActive="active" *ngFor="let category of categories | async">
-            <a routerLink="/category/{{category.id}}" (click)="notifyOfPageChange(category.name)">
-              <i class="material-icons">folder_open</i>
-              <p>{{category.name}}</p>
-            </a>
-          </li>
-        </ul>
+      <li routerLinkActive="active">
+        <a routerLink="/newest" (click)="notifyOfPageChange('Newest ideas')">
+          <i class="material-icons">lightbulb_outline</i>
+          <p>Newest ideas</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" *ngFor="let category of categories | async">
+        <a routerLink="/category/{{category.id}}" (click)="notifyOfPageChange(category.name)">
+          <i class="material-icons">folder_open</i>
+          <p>{{category.name}}</p>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
