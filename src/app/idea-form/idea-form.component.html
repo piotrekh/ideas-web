@@ -25,8 +25,8 @@
                 <div class="col-md-8">
                     <div class="form-group label-floating">
                         <label class="control-label">Subcategories</label>
-                        <tag-input [(ngModel)]='selectedSubcategories' name="subcategories" [maxItems]="5">
-                            <tag-input-dropdown [showDropdownIfEmpty]="false" [autocompleteItems]="subcategories">
+                        <tag-input [(ngModel)]="idea.subcategories" name="subcategories" [maxItems]="5" [disable]="!category.valid">
+                            <tag-input-dropdown [showDropdownIfEmpty]="false" [autocompleteItems]="subcategories" [autocompleteObservable]="autocompleteSubcategories">
                             </tag-input-dropdown>
                         </tag-input>
                     </div>

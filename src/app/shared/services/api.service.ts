@@ -13,6 +13,7 @@ import { IdeaDetails } from '../models/idea-details.model';
 import * as constants from '../const/constants';
 
 import { StorageService } from './storage.service';
+import { Subcategory } from '../models/subcategory.model';
 
 @Injectable()
 export class ApiService {
@@ -68,6 +69,13 @@ export class ApiService {
 
         return this.http.get(url, this.createHttpOptions())
             .map((r: Response) => { return r.json().items as Category[]; });
+    }
+
+    getSubcategories(categoryId: string): Observable<Subcategory[]> {
+        let url: string = `${environment.apiUrl}/categories/${categoryId}/subcategories`;
+
+        return this.http.get(url, this.createHttpOptions())
+            .map((r: Response) => { return r.json().items as Subcategory[]; });
     }
 
     //#endregion
