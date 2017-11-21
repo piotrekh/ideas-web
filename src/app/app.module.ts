@@ -26,7 +26,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IdeaCardComponent } from './idea-card/idea-card.component';
 import { IdeaDetailsComponent } from './idea-details/idea-details.component';
 import { IdeaFormComponent } from './idea-form/idea-form.component';
-import { DropdownComponent } from './controls/dropdown/dropdown.component';
+import { ControlsModule } from './controls/controls.module';
 
 @NgModule({
   declarations: [
@@ -39,8 +39,7 @@ import { DropdownComponent } from './controls/dropdown/dropdown.component';
     NavbarComponent,
     IdeaCardComponent,
     IdeaDetailsComponent,
-    IdeaFormComponent,
-    DropdownComponent 
+    IdeaFormComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +48,8 @@ import { DropdownComponent } from './controls/dropdown/dropdown.component';
     RouterModule.forRoot(ApplicationRoutes),
     HttpModule,
     LoadingModule.forRoot(ngxLoadingConfig),
-    TagInputModule
+    TagInputModule,
+    ControlsModule
   ],
   providers: [
     StorageService,
